@@ -22,6 +22,9 @@ jobs:
           - arch: x64
             target: obj-x64
             config: nts-windows-vs17-x64-avx
+          - arch: x64
+            target: obj-x64
+            config: nts-windows-vs17-x64-avx512          
           - arch: x86
             target: obj
             config: nts-windows-vs17-x86
