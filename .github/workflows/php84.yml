@@ -24,6 +24,9 @@ jobs:
             config: nts-windows-vs17-x64-avx
           - arch: x64
             target: obj-x64
+            config: nts-windows-vs17-x64-avx2
+          - arch: x64
+            target: obj-x64
             config: nts-windows-vs17-x64-avx512            
     name: Build PHP
     steps:
