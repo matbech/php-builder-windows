@@ -28,7 +28,7 @@ To install a PHP snapshot, open an elevated PowerShell session and run these com
 # Configure
 $php_dir = 'C:\tools\php' # Set this as per your setup
 $arch    = 'x64'          # Set x64
-$ts      = $False         # Set $False for nts or $True for ts
+$ts      = $False         # Set $False for nts
 $version = '8.4'          # Set 8.4, or 8.5
 
 # Install
