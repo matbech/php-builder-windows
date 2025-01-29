@@ -71,8 +71,8 @@ if($Version -match '8.[0-4]') {
   Install-Php -Version $Version -Architecture $Architecture -ThreadSafe $ThreadSafe -InstallVC -Path $Path -TimeZone UTC -InitialPhpIni Production -Force
 } else {
   $file = "php-$Version.0-dev$ts-Win32-vs17-$Architecture.zip"
-  $repo = "shivammathur/php-builder-windows"
-  Get-File -Url "https://github.com/$repo/releases/download/php$Version/$file" -FallbackUrl "https://dl.cloudsmith.io/public/$repo/raw/files/$file" -OutFile $Path\master.zip -Retries 3
+  $repo = "matbech/php-builder-windows"
+  Get-File -Url "https://github.com/$repo/releases/download/php$Version/$file" -OutFile $Path\master.zip -Retries 3
   Expand-Archive -Path $Path\master.zip -DestinationPath $Path -Force
   Copy-Item $Path\php.ini-production -Destination $Path\php.ini
 }
