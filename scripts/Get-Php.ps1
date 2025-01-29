@@ -72,13 +72,10 @@ if($Version -match '8.[0-4]') {
   $branch = "PHP-$Version"
 }
 $vs = 'vs17'
-if($Version -match '8.[0-3]') {
-  $vs = 'vs16'
-}
 $semver = Get-File -Url "https://raw.githubusercontent.com/php/php-src/$branch/main/php_version.h" -FallbackUrl "https://cdn.jsdelivr.net/gh/php/php-src@$branch/main/php_version.h" -TimeoutSec 3 | Where-Object { $_  -match 'PHP_VERSION "(.*)"' } | Foreach-Object {$Matches[1]}
 $file = "php-$semver$ts-Win32-$vs-$Architecture.zip"
-$repo = "shivammathur/php-builder-windows"
-Get-File -Url "https://github.com/$repo/releases/download/php$Version/$file" -FallbackUrl "https://dl.cloudsmith.io/public/$repo/raw/files/$file" -OutFile $Path\master.zip -Retries 3
+$repo = "matbech/php-builder-windows"
+Get-File -Url "https://github.com/$repo/releases/download/php$Version/$file" -OutFile $Path\master.zip -Retries 3
 Expand-Archive -Path $Path\master.zip -DestinationPath $Path -Force
 Copy-Item $Path\php.ini-production -Destination $Path\php.ini
 Move-Item -Path $Path\ext\php_oci8*.dll -Destination $Path\ext\php_oci8.dll -Force
