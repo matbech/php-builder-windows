@@ -15,10 +15,10 @@ The following configurations are built nightly.
 - `test pack` for the version.
 
 ### PHP 8.5.0-dev/master
-[https://github.com/matbech/php-builder-windows/releases/tag/php8.5](https://github.com/shivammathur/php-builder-windows/releases/tag/php8.5)
+[https://github.com/matbech/php-builder-windows/releases/tag/php8.5](https://github.com/matbech/php-builder-windows/releases/tag/php8.5)
 
 ### PHP 8.4.x-dev
-[https://github.com/matbech/php-builder-windows/releases/tag/php8.4](https://github.com/shivammathur/php-builder-windows/releases/tag/php8.4)
+[https://github.com/matbech/php-builder-windows/releases/tag/php8.4](https://github.com/matbech/php-builder-windows/releases/tag/php8.4)
 
 ## Install
 
