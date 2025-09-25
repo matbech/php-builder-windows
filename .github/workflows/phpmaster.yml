@@ -7,7 +7,7 @@ on:
     - cron: '30 23 * * *'
 jobs:
   build:
-    if: "!contains(github.event.head_commit.message, 'skip-8.5')"
+    if: "!contains(github.event.head_commit.message, 'skip-8.6')"
     runs-on: windows-2025
     strategy:
       fail-fast: false
@@ -120,6 +120,6 @@ jobs:
         env:          
           CLOUDSMITH_API_KEY: ${{ secrets.CLOUDSMITH_API_KEY }}
           GITHUB_MESSAGE: ${{ github.event.head_commit.message }}
-          GITHUB_RELEASES: php8.5 master
+          GITHUB_RELEASES: php8.6 master
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
