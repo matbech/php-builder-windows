@@ -10,7 +10,7 @@
 
 The following configurations are built nightly.
 
-- `nts-x64`, `nts-x64-AVX`, `nts-x64-AVX2`, `nts-x64-AVX512`.
+- `nts-x64-AVX2`, `nts-x64-AVX512`.
 - `debug-pack`, `devel=pack` for each configuration.
 - `test pack` for the version.
 
