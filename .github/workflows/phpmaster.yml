@@ -36,7 +36,7 @@ jobs:
         run: |
           New-Item -ItemType "directory" -Path C:\php-snap-build
           cd C:\php-snap-build
-          git clone https://github.com/php/php-sdk-binary-tools.git php-sdk
+          git clone https://github.com/matbech/php-sdk-binary-tools.git php-sdk
           git clone https://github.com/matbech/web-rmtools.git rmtools
           New-Item -ItemType "directory" -Path C:\php-snap-build\${{ matrix.target }}
           New-Item -ItemType "directory" -Path C:\php-snap-build\snap_master\vs18\${{ matrix.arch }}
