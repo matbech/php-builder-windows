@@ -15,10 +15,10 @@ jobs:
         include:
           - arch: x64
             target: obj-x64
-            config: nts-windows-vs17-x64-avx2
+            config: nts-windows-vs18-x64-avx2
           - arch: x64
             target: obj-x64
-            config: nts-windows-vs17-x64-avx512
+            config: nts-windows-vs18-x64-avx512
     name: Build PHP
     steps:
       - name: Checkout
@@ -39,7 +39,7 @@ jobs:
           git clone https://github.com/php/php-sdk-binary-tools.git php-sdk
           git clone https://github.com/matbech/web-rmtools.git rmtools
           New-Item -ItemType "directory" -Path C:\php-snap-build\${{ matrix.target }}
-          New-Item -ItemType "directory" -Path C:\php-snap-build\snap_84\vs17\${{ matrix.arch }}
+          New-Item -ItemType "directory" -Path C:\php-snap-build\snap_84\vs18\${{ matrix.arch }}
           Copy-Item -Path C:\php-snap-build\rmtools\bin\rmtools_setvars.bat-dist -Destination C:\php-snap-build\rmtools\bin\rmtools_setvars.bat
           Copy-Item -Path C:\php-snap-build\rmtools\data\config\credentials_ftps.php-dist -Destination C:\php-snap-build\rmtools\data\config\credentials_ftps.php
       - name: Add InstantClient
@@ -75,7 +75,7 @@ jobs:
         run: |
           C:\php-snap-build\php-sdk\bin\vswhere
           $ErrorActionPreference = "Stop"
-          & C:\php-snap-build\php-sdk\phpsdk-vs17-${{ matrix.arch }}.bat -t C:\php-snap-build\rmtools\bin\snapshot_task.bat --task-args "php84 ${{ matrix.config }}"
+          & C:\php-snap-build\php-sdk\phpsdk-vs18-${{ matrix.arch }}.bat -t C:\php-snap-build\rmtools\bin\snapshot_task.bat --task-args "php84 ${{ matrix.config }}"
       - name: Collect Artifacts
         run: |
           New-Item -ItemType "directory" -Path builds

@@ -15,10 +15,10 @@ jobs:
         include:
           - arch: x64
             target: obj-x64
-            config: nts-windows-vs17-x64-avx2
+            config: nts-windows-vs18-x64-avx2
           - arch: x64
             target: obj-x64
-            config: nts-windows-vs17-x64-avx512
+            config: nts-windows-vs18-x64-avx512
     name: Build PHP
     steps:
       - name: Checkout
@@ -39,7 +39,7 @@ jobs:
           git clone https://github.com/php/php-sdk-binary-tools.git php-sdk
           git clone https://github.com/matbech/web-rmtools.git rmtools
           New-Item -ItemType "directory" -Path C:\php-snap-build\${{ matrix.target }}
-          New-Item -ItemType "directory" -Path C:\php-snap-build\snap_master\vs17\${{ matrix.arch }}
+          New-Item -ItemType "directory" -Path C:\php-snap-build\snap_master\vs18\${{ matrix.arch }}
           Copy-Item -Path C:\php-snap-build\rmtools\bin\rmtools_setvars.bat-dist -Destination C:\php-snap-build\rmtools\bin\rmtools_setvars.bat
           Copy-Item -Path C:\php-snap-build\rmtools\data\config\credentials_ftps.php-dist -Destination C:\php-snap-build\rmtools\data\config\credentials_ftps.php
       - name: Patch Tools
@@ -61,7 +61,7 @@ jobs:
         run: |
           C:\php-snap-build\php-sdk\bin\vswhere
           $ErrorActionPreference = "Stop"
-          & C:\php-snap-build\php-sdk\phpsdk-vs17-${{ matrix.arch }}.bat -t C:\php-snap-build\rmtools\bin\snapshot_task.bat --task-args "phpmaster ${{ matrix.config }}"
+          & C:\php-snap-build\php-sdk\phpsdk-vs18-${{ matrix.arch }}.bat -t C:\php-snap-build\rmtools\bin\snapshot_task.bat --task-args "phpmaster ${{ matrix.config }}"
       - name: Collect Artifacts
         run: |
           $php_version = Invoke-RestMethod https://raw.githubusercontent.com/php/php-src/master/main/php_version.h | Where-Object { $_  -match 'PHP_VERSION "(.*)"' } | Foreach-Object {$Matches[1]}
@@ -70,7 +70,7 @@ jobs:
           Copy-Item -Path builds -Destination master -Container -Recurse
           Copy-Item -Path C:\php-snap-build\rmtools\data\db\master.json -Destination .\builds\${{ matrix.config }}.json
           Get-ChildItem .\master *.zip | Rename-Item -NewName { $_.name -replace "win32","windows" }
-          if(("${{ matrix.config }}" -eq "ts-windows-vs17-x64") -or ("${{ matrix.config }}" -eq "ts-windows-vs17-x86")) {
+          if(("${{ matrix.config }}" -eq "ts-windows-vs18-x64") -or ("${{ matrix.config }}" -eq "ts-windows-vs18-x86")) {
             Get-ChildItem .\master *.zip | Rename-Item -NewName { $_.name -replace $php_version,"master-ts" }
           } else {
             Get-ChildItem .\master *.zip | Rename-Item -NewName { $_.name -replace $php_version,"master" }
