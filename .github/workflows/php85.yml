@@ -75,7 +75,7 @@ jobs:
         run: |
           C:\php-snap-build\php-sdk\bin\vswhere
           $ErrorActionPreference = "Stop"
-          & C:\php-snap-build\php-sdk\phpsdk-vs18-${{ matrix.arch }}.bat -t C:\php-snap-build\rmtools\bin\snapshot_task.bat --task-args "php84 ${{ matrix.config }}"
+          & C:\php-snap-build\php-sdk\phpsdk-vs18-${{ matrix.arch }}.bat -t C:\php-snap-build\rmtools\bin\snapshot_task.bat --task-args "php85 ${{ matrix.config }}"
       - name: Collect Artifacts
         run: |
           New-Item -ItemType "directory" -Path builds
