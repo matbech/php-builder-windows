@@ -26,7 +26,7 @@ jobs:
       - name: Install PHP
         uses: shivammathur/setup-php@develop
         with:
-          php-version: 8.1
+          php-version: 8.5
           ini-values: disable_functions=mail
       - name: Test PHP
         run: php -v
